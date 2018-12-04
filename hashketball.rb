@@ -1,3 +1,5 @@
+require 'pry'
+
 def game_hash
   {
     home: {
@@ -131,14 +133,26 @@ end
 
 def shoe_size(name)
   game_hash.each do |location, team_data|
-    players_array = team_data[:players]
-    players_array.each do |player_name, data|
+    team_data[:players].each do |player_name, data|
       if player_name == name
         return data[:shoe] # pretty much the same method used above but instead of points, we look at the shoe value :shoe
       end
     end
   end
 end
+
+def player_by_num(num)
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |player_name, data|
+      binding.pry
+      if num == data[:number]
+        return player_name
+      end
+    end
+  end
+end
+
+puts player_by_num(33)
 
 def team_colors(team) # finds the colors of the team you put in the argument
   game_hash.each do |location, team_data| # same method as above, but one level higher
