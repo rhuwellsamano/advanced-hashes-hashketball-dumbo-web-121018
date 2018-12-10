@@ -129,6 +129,7 @@ def num_points_scored(name) # name is player name given to find how many points 
   end
 end
 
+##
 def shoe_size(name)
   game_hash.each do |location, team_data|
     players_array = team_data[:players]
